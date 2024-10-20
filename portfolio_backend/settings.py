@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
+import django_heroku
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -28,9 +29,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "default-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "kmh-portfolio-backend-647176890946.herokuapp.com",
+    "kmh-portfolio-backend.herokuapp.com",
+    "kaustubhharapanahalli.github.io",
+]
 
 
 # Application definition
@@ -82,6 +88,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "portfolio_backend.wsgi.application"
 
+django_heroku.settings(locals())
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
